@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:grocery_shop/features/home/ui/home.dart';
+
+import './features/home/ui/home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,8 +11,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Home(),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primaryColor: Colors.purpleAccent,
+      ),
+      home: const Home(),
     );
   }
 }
