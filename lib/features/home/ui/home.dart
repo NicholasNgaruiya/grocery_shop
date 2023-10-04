@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../cart/ui/cart.dart';
+import '../../wishlist/ui/wishlist.dart';
 import '../bloc/home_bloc.dart';
 
 class Home extends StatefulWidget {
@@ -11,37 +13,62 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  @override
+  void initState() {
+    homeBloc.add(HomeInitialEvent());
+    super.initState();
+  }
+
   HomeBloc homeBloc = HomeBloc();
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<HomeBloc, HomeState>(
       bloc: homeBloc,
-      // listenWhen: (previous, current) {},
-      // buildWhen: (previous, current) {},
+      listenWhen: (previous, current) => current is HomeActionstate,
+      buildWhen: (previous, current) => current is! HomeActionstate,
       listener: (context, state) {
-        // TODO: implement listener
+        if (state is NavigateToWishlistPageActionState) {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const Wishlist()));
+        } else if (state is NavigateToCartPageActionState) {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => const Cart()));
+        }
       },
       builder: (context, state) {
-        return Scaffold(
-          appBar: AppBar(
-            title: const Text("Grocery App"),
-            actions: [
-              IconButton(
-                onPressed: () {
-                  homeBloc.add(HomeWishlistButtonNavigateEvent());
-                  print("Event added");
-                },
-                icon: const Icon(Icons.favorite_outline),
+        switch (state.runtimeType) {
+          case HomeloadingState:
+            return const Scaffold(
+              body: Center(child: CircularProgressIndicator()),
+            );
+          case HomeLoadedSuccessState:
+            return Scaffold(
+              appBar: AppBar(
+                title: const Text("Grocery App"),
+                backgroundColor: Colors.teal,
+                actions: [
+                  IconButton(
+                    onPressed: () {
+                      homeBloc.add(HomeWishlistButtonNavigateEvent());
+                    },
+                    icon: const Icon(Icons.favorite_outline),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      homeBloc.add(HomeCartButtonNavigateEvent());
+                    },
+                    icon: const Icon(Icons.shopping_cart_outlined),
+                  ),
+                ],
               ),
-              IconButton(
-                onPressed: () {
-                  homeBloc.add(HomeCartButtonNavigateEvent());
-                },
-                icon: const Icon(Icons.shopping_cart_outlined),
-              ),
-            ],
-          ),
-        );
+            );
+          case HomeErrorState:
+            return const Scaffold(
+              body: Center(child: Text("Error")),
+            );
+          default:
+            return const SizedBox();
+        }
       },
     );
   }
