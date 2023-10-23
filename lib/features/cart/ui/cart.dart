@@ -31,7 +31,7 @@ class _CartState extends State<Cart> {
         listenWhen: (previous, current) => current is CartActionState,
         buildWhen: (previous, current) => current is! CartActionState,
         listener: (context, state) {
-          // TODO: implement listener
+          //do nothing
         },
         builder: (context, state) {
           switch (state.runtimeType) {
