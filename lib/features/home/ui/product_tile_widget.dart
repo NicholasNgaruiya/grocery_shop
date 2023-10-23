@@ -15,7 +15,7 @@ class ProductTileWidget extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: Colors.black),
+        border: Border.all(color: Colors.teal),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -26,7 +26,8 @@ class ProductTileWidget extends StatelessWidget {
             decoration: BoxDecoration(
                 image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: NetworkImage(productDataModel.imageUrl))),
+                    // image: NetworkImage(productDataModel.imageUrl)
+                    image: AssetImage(productDataModel.imageUrl))),
           ),
           const SizedBox(height: 10),
           Text(
