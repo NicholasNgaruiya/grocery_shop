@@ -24,6 +24,7 @@ class _WishlistState extends State<Wishlist> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Wishlist"),
+        backgroundColor: Colors.teal,
       ),
       body: BlocConsumer<WishlistBloc, WishlistState>(
         bloc: wishlistBloc,
