@@ -42,7 +42,7 @@ class ProductTileWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "Ksh.${productDataModel.price}",
+                "Ksh. ${productDataModel.price}",
                 style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -52,13 +52,15 @@ class ProductTileWidget extends StatelessWidget {
                 children: [
                   IconButton(
                     onPressed: () {
-                      homeBloc.add(HomeProductWishlistButtonClickedEvent());
+                      homeBloc.add(HomeProductWishlistButtonClickedEvent(
+                          productDataModel));
                     },
                     icon: const Icon(Icons.favorite_outline),
                   ),
                   IconButton(
                     onPressed: () {
-                      homeBloc.add(HomeProductCartButtonClickedEvent());
+                      homeBloc.add(
+                          HomeProductCartButtonClickedEvent(productDataModel));
                     },
                     icon: const Icon(Icons.shopping_cart_outlined),
                   ),
