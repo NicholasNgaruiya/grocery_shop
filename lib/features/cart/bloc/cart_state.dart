@@ -3,7 +3,7 @@ part of 'cart_bloc.dart';
 @immutable
 abstract class CartState {}
 
-abstract class CartActionState {}
+final class CartActionState extends CartState {}
 
 final class CartInitial extends CartState {}
 
@@ -12,3 +12,5 @@ final class CartSuccessState extends CartState {
 
   CartSuccessState(this.cartItems);
 }
+
+final class RemovedFromCartActionState extends CartActionState {}
