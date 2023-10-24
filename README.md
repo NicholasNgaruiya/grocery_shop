@@ -2,10 +2,6 @@
 
 This is a Mobile shop for your Grocery shopping made with Flutter,Dart and Bloc Statemanagement
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
 ## ScreenShots
 
 ![Screenshot_20231023-155127](https://github.com/NicholasNgaruiya/grocery_shop/assets/116637116/d02e15a0-ea8a-4a13-a823-dc1f95cd9142)
