@@ -4,6 +4,8 @@ This is a Mobile shop for your Grocery shopping made with Flutter,Dart and Bloc 
 
 ## ScreenShots
 
+<img src="https://github.com/NicholasNgaruiya/grocery_shop/assets/116637116/d02e15a0-ea8a-4a13-a823-dc1f95cd9142" width="300" height="600">
+
 ![Screenshot_20231023-155127](https://github.com/NicholasNgaruiya/grocery_shop/assets/116637116/d02e15a0-ea8a-4a13-a823-dc1f95cd9142)
 
 ![Screenshot_20231023-155142](https://github.com/NicholasNgaruiya/grocery_shop/assets/116637116/798f487d-3f5f-4ea5-841c-e4c76421047e)
